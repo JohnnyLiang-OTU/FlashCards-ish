@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.HashMap;
 
-public class txtReader
+public class TxtReader
 {
     static BufferedReader reader;
     static HashMap<String, String> wordCollection = new HashMap<>();
@@ -15,7 +15,9 @@ public class txtReader
             while(line != null)
             {
                 formatLine(line);
+                line = reader.readLine();
             }
+            reader.close();
             return wordCollection;
         }
         catch (IOException e)
@@ -26,7 +28,7 @@ public class txtReader
     static public void formatLine(String line)
     {
         String[] words = line.split("-");
-        String pinyin_and_definition = words[1]+","+words[2];
-        wordCollection.put(words[0], pinyin_and_definition);
+//        String pinyin_and_definition = words[1]+","+words[2];
+        wordCollection.put(words[0], words[1]);
     }
 }
